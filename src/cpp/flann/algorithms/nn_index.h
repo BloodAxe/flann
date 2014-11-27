@@ -74,7 +74,16 @@ class NNIndex : public IndexBase
 {
 public:
     typedef typename Distance::ElementType ElementType;
-    typedef typename Distance::ResultType DistanceType;
+    typedef typename Distance::ResultType  DistanceType;
+
+    typedef Eigen::Matrix<ElementType, Eigen::Dynamic, Eigen::Dynamic>  MatrixType;
+    typedef Eigen::Matrix<ElementType, Eigen::Dynamic, 1>               VectorType;
+
+    typedef Eigen::Matrix<DistanceType, Eigen::Dynamic, Eigen::Dynamic> DistanceMatrix;
+    typedef Eigen::Matrix<DistanceType, Eigen::Dynamic, 1>              DistanceVector;
+
+    typedef Eigen::Matrix<size_t, Eigen::Dynamic, Eigen::Dynamic>       IndexMatrix;
+    typedef Eigen::Matrix<size_t, Eigen::Dynamic, 1>                    IndexVector;
 
 	NNIndex(Distance d) : distance_(d), last_id_(0), size_(0), size_at_build_(0), veclen_(0),
 			removed_(false), removed_count_(0), data_ptr_(NULL)

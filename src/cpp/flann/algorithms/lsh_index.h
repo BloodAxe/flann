@@ -81,6 +81,15 @@ public:
     typedef typename Distance::ElementType ElementType;
     typedef typename Distance::ResultType DistanceType;
 
+    typedef Eigen::Matrix<ElementType, Eigen::Dynamic, Eigen::Dynamic>  MatrixType;
+    typedef Eigen::Matrix<ElementType, Eigen::Dynamic, 1>               VectorType;
+
+    typedef Eigen::Matrix<DistanceType, Eigen::Dynamic, Eigen::Dynamic> DistanceMatrix;
+    typedef Eigen::Matrix<DistanceType, Eigen::Dynamic, 1>              DistanceVector;
+
+    typedef Eigen::Matrix<size_t, Eigen::Dynamic, Eigen::Dynamic>       IndexMatrix;
+    typedef Eigen::Matrix<size_t, Eigen::Dynamic, 1>                    IndexVector;
+
     typedef NNIndex<Distance> BaseClass;
 
     /** Constructor

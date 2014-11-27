@@ -76,13 +76,22 @@ public:
     typedef typename Distance::ElementType ElementType;
     typedef typename Distance::ResultType DistanceType;
     
+    typedef Eigen::Matrix<ElementType, Eigen::Dynamic, Eigen::Dynamic>  MatrixType;
+    typedef Eigen::Matrix<ElementType, Eigen::Dynamic, 1>               VectorType;
+
+    typedef Eigen::Matrix<DistanceType, Eigen::Dynamic, Eigen::Dynamic> DistanceMatrix;
+    typedef Eigen::Matrix<DistanceType, Eigen::Dynamic, 1>              DistanceVector;
+
+    typedef Eigen::Matrix<size_t, Eigen::Dynamic, Eigen::Dynamic>       IndexMatrix;
+    typedef Eigen::Matrix<size_t, Eigen::Dynamic, 1>                    IndexVector;
+
     typedef NNIndex<Distance> BaseClass;
 
     typedef AutotunedIndex<Distance> IndexType;
 
     typedef bool needs_kdtree_distance;
 
-    AutotunedIndex(const Matrix<ElementType>& inputData, const IndexParams& params = AutotunedIndexParams(), Distance d = Distance()) :
+    AutotunedIndex(const MatrixType& inputData, const IndexParams& params = AutotunedIndexParams(), Distance d = Distance()) :
         BaseClass(params, d), bestIndex_(NULL), speedup_(0), dataset_(inputData)
     {
         target_precision_ = get_param(params, "target_precision",0.8f);
